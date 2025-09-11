@@ -207,18 +207,8 @@ docker build --no-cache -t yourusername/agent-challenge:latest .
 ### Nosana Deployment Issues?
 
 - Ensure Docker image is public
-- Check you have enough NOS/SOL
 - Use nvidia-3060 market for best availability
-
-## Prizes 🏆
-
-**Top 10 submissions win:**
-
-- 1st: $1,000 USDC
-- 2nd: $750 USDC
-- 3rd: $450 USDC
-- 4th: $200 USDC
-- 5th-10th: $100 USDC
+- Double check that the job definiton JSON is valid
 
 ## Resources
 

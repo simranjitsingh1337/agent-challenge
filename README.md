@@ -8,8 +8,7 @@ Vibe coding and Deploying Mastra Agents to Nosana
 
 ## Description
 
-This first step will be in running a basic AI agent and giving it some basic functionality. Participants will add a tool, for the tool calling capabilities of the agent. These are basically TypeScript functions, that will, for example, retrieve some data from a weather API, post a tweet via an API call, etc.
-At the end of the challenge, participants will have a working agent, that they can deploy to Nosana.
+This first step will be in running a basic AI agent and giving it some basic functionality. Participants will add a tool, for the tool calling capabilities of the agent. These are TypeScript functions, that will, for example, make API calls, or perform calculations. At the end of the challenge, participants will have a working agent, that they can deploy to Nosana.
 
 ## [Mastra](https://github.com/mastra-ai/mastra)
 
@@ -73,55 +72,28 @@ Rename these files to represent the purpose of your agent and tools. You can use
 
 As a bonus, for the ambitious ones, we have also provided the [src/mastra/agents/weather-agent/weather-workflow.ts](./src/mastra/agents/weather-agent/weather-workflow.ts) file as an example. This file contains an example of how you can chain agents and tools to create a workflow, in this case, the user provides their location, and the agent retrieves the weather for the specified location, and suggests an itinerary.
 
+### 3 Hour Challenge
+
+For the 3 hour challenge, we have provided a tool to create a basic template to get you started quickly.
+
+1. Calculator Agent
+2. Crypto Price Agent
+3. GitHub Stats Agent
+
+Read more about it at [README-3HOUR.md](./README-3HOUR.md)
+
 ### LLM-Endpoint
 
-Agents depend on an LLM to be able to do their work.
+Agents depend on an LLM to be able to do their work. Nosana will provide you with and enddpoint to use.
 
 #### Nosana Endpoint
 
-You can use the following endpoint and model for testing, if you wish:
+You can use the following endpoint for your agent:
 
 ```
 MODEL_NAME_AT_ENDPOINT=qwen2.5:1.5b
 API_BASE_URL= https://dashboard.nosana.com/jobs/GPVMUckqjKR6FwqnxDeDRqbn34BH7gAa5xWnWuNH1drf
 ```
-
-#### Running Your Own LLM with Ollama
-
-The default configuration uses a local [Ollama](https://ollama.com) LLM.
-For local development or if you prefer to use your own LLM, you can use [Ollama](https://ollama.ai) to serve the lightweight `qwen2.5:1.5b` mode.
-
-**Installation & Setup:**
-
-1. **[ Install Ollama ](https://ollama.com/download)**:
-
-2. **Start Ollama service**:
-
-```bash
-ollama serve
-```
-
-3. **Pull and run the `qwen2.5:1.5b` model**:
-
-```bash
-ollama pull qwen2.5:1.5b
-ollama run qwen2.5:1.5b
-```
-
-4. **Update your `.env` file**
-
-There are two predefined environments defined in the `.env` file. One for local development and another, with a larger model, `qwen2.5:32b`, for more complex use cases.
-
-**Why `qwen2.5:1.5b`?**
-
-- Lightweight (only ~1GB)
-- Fast inference on CPU
-- Supports tool calling
-- Great for development and testing
-
-Do note `qwen2.5:1.5b` is not suited for complex tasks.
-
-The Ollama server will run on `http://localhost:11434` by default and is compatible with the OpenAI API format that Mastra expects.
 
 ### Testing your Agent
 
@@ -157,7 +129,6 @@ Ensure your agent responds correctly and all tools function properly within the 
 
 - Fork this repository and develop your AI agent
 - Your agent must include at least one custom tool (function)
-- Code must be well-documented and include clear setup instructions
 - Include environment variable examples in a `.env.example` file
 
 #### 2. Docker Container
@@ -165,7 +136,6 @@ Ensure your agent responds correctly and all tools function properly within the 
 - Create a `Dockerfile` for your agent
 - Build and push your container to Docker Hub or GitHub Container Registry
 - Container must be publicly accessible
-- Include the container URL in your submission
 
 ##### Build, Run, Publish
 
@@ -203,13 +173,6 @@ We have included a Nosana job definition at <./nos_job_def/nosana_mastra.json>, 
 - Copy and Paste your edited Nosana Job Definition file into the Textarea
 - Choose an appropriate GPU for the AI model that you are using
 - Click `Deploy`
-
-#### 4. Video Demo
-
-- Record a 1-3 minute video demonstrating:
-  - Your agent running on Nosana
-  - Key features and functionality
-  - Real-world use case demonstration
 
 ### Judging Criteria
 
@@ -260,11 +223,6 @@ We’re awarding the **top 10 submissions**:
 - Ensure your agent doesn't expose sensitive data
 - Keep your Docker images lightweight
 - You can vibe code it if you want 😉
-- **Only one submission per participant**
-- **Submissions that do not compile, and do not meet the specified requirements, will not be considered**
-- **Deadline is: 9 July 2025, 12.01 PM**
-- **Announcement will be announced about one week later, stay tuned for our socials for exact date**
-- **Finalize your submission at [SuperTeam](https://earn.superteam.fun/agent-challenge)**
 
 ### Don’t Miss Nosana Builder Challenge Updates
 
