@@ -9,9 +9,6 @@
           {
             "port": 8080
           }
-        ],
-        "entrypoint": [
-          "/bin/sh"
         ]
       },
       "type": "container/run"

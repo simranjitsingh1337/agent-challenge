@@ -1,11 +1,10 @@
-# Nosana Builders Challenge: Agent-101
+# Nosana and AI Builders Presents: BUIDL DAY @ TOKEN2049 🚀
 
 ![Agent-101](./assets/NosanaBuildersChallengeAgents.jpg)
 
 ## Topic
 
-Nosana Builders Challenge, 2nd edition
-Agent-101: Build your first agent
+Building and Deploying Mastra Agents on Nosana
 
 ## Description
 
@@ -34,31 +33,15 @@ pnpm install
 pnpm run dev
 ```
 
+## Credits
+
+To deploy your agent, you will need credits.
+You need to have registered via the [Luma Page](https://luma.com/nosana-buidlday-SG).
+Registering via the [Luma Page](https://luma.com/nosana-buidlday-SG) is essential!
+
 ## Assignment
 
-### Challenge Overview
-
-Welcome to the Nosana AI Agent Hackathon! Your mission is to build and deploy an AI agent on Nosana.
-While we provide a weather agent as an example, your creativity is the limit. Build agents that:
-
-**Beginner Level:**
-
-- **Simple Calculator**: Perform basic math operations with explanations
-- **Todo List Manager**: Help users track their daily tasks
-
-**Intermediate Level:**
-
-- **News Summarizer**: Fetch and summarize latest news articles
-- **Crypto Price Checker**: Monitor cryptocurrency prices and changes
-- **GitHub Stats Reporter**: Fetch repository statistics and insights
-
-**Advanced Level:**
-
-- **Blockchain Monitor**: Track and alert on blockchain activities
-- **Trading Strategy Bot**: Automate simple trading strategies
-- **Deploy Manager**: Deploy and manage applications on Nosana
-
-Or any other innovative AI agent idea at your skill level!
+Read [README-3HOUR.md](./README-3HOUR.md) for details on the 3-Hour Challenge.
 
 ### Getting Started
 
@@ -212,20 +195,9 @@ docker push yourusername/agent-challenge:latest
 
 We have included a Nosana job definition at <./nos_job_def/nosana_mastra.json>, that you can use to publish your agent to the Nosana network.
 
-**A. Deploying using [@nosana/cli](https://github.com/nosana-ci/nosana-cli/)**
+**Deploying using the [Nosana Dashboard](https://dashboard.nosana.com/deploy)**
 
-- Edit the file and add in your published docker image to the `image` property. `"image": "docker.io/yourusername/agent-challenge:latest"`
-- Download and install the [@nosana/cli](https://github.com/nosana-ci/nosana-cli/)
-- Load your wallet with some funds
-  - Retrieve your address with: `nosana address`
-  - Go to our [Discord](https://nosana.com/discord) and ask for some NOS and SOL to publish your job.
-- Run: `nosana job post --file nosana_mastra.json --market nvidia-3060 --timeout 30`
-- Go to the [Nosana Dashboard](https://dashboard.nosana.com/deploy) to see your job
-
-**B. Deploying using the [Nosana Dashboard](https://dashboard.nosana.com/deploy)**
-
-- Make sure you have https://phantom.com/, installed for your browser.
-- Go to our [Discord](https://nosana.com/discord) and ask for some NOS and SOL to publish your job.
+- Make sure you registered via the [Luma Page](https://luma.com/nosana-buidlday-SG) to get credits
 - Click the `Expand` button, on the [Nosana Dashboard](https://dashboard.nosana.com/deploy)
 - Copy and Paste your edited Nosana Job Definition file into the Textarea
 - Choose an appropriate GPU for the AI model that you are using
@@ -237,52 +209,21 @@ We have included a Nosana job definition at <./nos_job_def/nosana_mastra.json>, 
   - Your agent running on Nosana
   - Key features and functionality
   - Real-world use case demonstration
-- Upload to YouTube, Loom, or similar platform
-
-#### 5. Documentation
-
-- Update this README with:
-  - Agent description and purpose
-  - Setup instructions
-  - Environment variables required
-  - Docker build and run commands
-  - Example usage
-
-### Submission Process
-
-1. **Complete all requirements** listed above
-2. **Commit all of your changes to the `main` branch of your forked repository**
-   - All your code changes
-   - Updated README
-   - Link to your Docker container
-   - Link to your video demo
-   - Nosana deployment proof
-3. **Social Media Post**: Share your submission on X (Twitter)
-   - Tag @nosana_ai
-   - Include a brief description of your agent
-   - Add hashtag #NosanaAgentChallenge
-4. **Finalize your submission on the <https://earn.superteam.fun/agent-challenge> page**
-
-- Remember to add your forked GitHub repository link
-- Remember to add a link to your X post.
 
 ### Judging Criteria
 
 Submissions will be evaluated based on:
 
 1. **Innovation** (25%)
-
    - Originality of the agent concept
    - Creative use of AI capabilities
 
 2. **Technical Implementation** (25%)
-
    - Code quality and organization
    - Proper use of the Mastra framework
    - Efficient tool implementation
 
 3. **Nosana Integration** (25%)
-
    - Successful deployment on Nosana
    - Resource efficiency
    - Stability and performance
@@ -292,17 +233,13 @@ Submissions will be evaluated based on:
    - Potential for adoption
    - Value proposition
 
-### Prizes
+### Prizes TBD
 
 We’re awarding the **top 10 submissions**:
 
-- 🥇 1st: $1,000 USDC
-- 🥈 2nd: $750 USDC
-- 🥉 3rd: $450 USDC
-- 🏅 4th: $200 USDC
-- 🔟 5th–10th: $100 USDC
-
-All prizes are paid out directly to participants on [SuperTeam](https://superteam.fun)
+- 🥇 1st: $?? USDC
+- 🥈 2nd: $?? USDC
+- 🥉 3rd: $?? USDC
 
 ### Resources
 
@@ -320,10 +257,7 @@ All prizes are paid out directly to participants on [SuperTeam](https://supertea
 ### Important Notes
 
 - Ensure your agent doesn't expose sensitive data
-- Test thoroughly before submission
 - Keep your Docker images lightweight
-- Document all dependencies clearly
-- Make your code reproducible
 - You can vibe code it if you want 😉
 - **Only one submission per participant**
 - **Submissions that do not compile, and do not meet the specified requirements, will not be considered**

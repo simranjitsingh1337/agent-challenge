@@ -20,13 +20,15 @@ pnpm run dev
 ## Test Your Agent
 
 ### Calculator Agent
+
 ```
 "Calculate 25 + 17"
 "What's 100 divided by 4?"
 "Multiply 12 by 8"
 ```
 
-### Crypto Agent  
+### Crypto Agent
+
 ```
 "What's the current price of Bitcoin?"
 "Show me SOL price"
@@ -34,9 +36,10 @@ pnpm run dev
 ```
 
 ### GitHub Agent
+
 ```
 "Get stats for facebook/react"
-"Show me microsoft/typescript repository" 
+"Show me microsoft/typescript repository"
 "Analyze nosana-ai/nosana-cli stats"
 ```
 
@@ -48,8 +51,9 @@ pnpm run dev
 ```
 
 This will:
+
 1. Build Docker image
-2. Push to Docker Hub  
+2. Push to Docker Hub
 3. Update job definition
 4. Show you the deploy command
 
@@ -58,7 +62,8 @@ This will:
 1. **Get test funds**: Join [Discord](https://nosana.com/discord), ask for NOS/SOL
 2. **Deploy**: `nosana job post --file nos_job_def/nosana_mastra.json --market nvidia-3060 --timeout 30`
 3. **Demo**: Record 1-minute video
-4. **Tweet**: @nosana_ai #NosanaAgentChallenge  
+4. **Tweet**: @nosana_ai #NosanaAgentChallenge
 5. **Submit**: https://earn.superteam.fun/agent-challenge
 
 **Done! 🎉**
+

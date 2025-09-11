@@ -17,7 +17,16 @@
             "port": 11434,
             "health_checks": [
               {
-                "body": "{\"model\":\"qwen2.5:32b\",\"messages\":[{\"role\":\"user\",\"content\":\"Respond with a single word: Ready\"}],\"stream\":false}",
+                "body": {
+                  "model": "qwen2.5:32b",
+                  "messages": [
+                    {
+                      "role": "user",
+                      "content": "Respond with a single word: Ready"
+                    }
+                  ],
+                  "stream": false
+                },
                 "path": "/v1/chat/completions",
                 "type": "http",
                 "method": "POST",
@@ -29,18 +38,14 @@
               }
             ]
           }
-        ],
-        "entrypoint": [
-          "/bin/sh"
         ]
       },
       "type": "container/run"
     }
   ],
   "meta": {
-    "trigger": "dashboard",
     "system_requirements": {
-      "required_vram": 4
+      "required_vram": 24
     }
   },
   "type": "container",
