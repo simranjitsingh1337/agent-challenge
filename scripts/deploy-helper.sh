@@ -9,9 +9,9 @@ echo "============================================="
 
 # Check if username is provided
 if [ -z "$1" ]; then
-    echo "Usage: ./scripts/deploy-helper.sh <dockerhub-username>"
-    echo "Example: ./scripts/deploy-helper.sh johnsmith"
-    exit 1
+  echo "Usage: ./scripts/deploy-helper.sh <dockerhub-username>"
+  echo "Example: ./scripts/deploy-helper.sh johnsmith"
+  exit 1
 fi
 
 USERNAME=$1
@@ -34,10 +34,6 @@ echo "✅ Docker image deployed: $IMAGE_NAME"
 echo "✅ Job definition updated: nos_job_def/nosana_mastra.json"
 echo ""
 echo "Next steps:"
-echo "1. Deploy to Nosana:"
-echo "   nosana job post --file nos_job_def/nosana_mastra.json --market nvidia-3060 --timeout 30"
-echo ""
-echo "2. Or use the npm script:"
-echo "   npm run deploy:agent"
-echo ""
-echo "3. Monitor your job at: https://dashboard.nosana.com/deploy"
+echo "Deploy to Nosana:"
+echo "Go to https://dashboard.nosana.com/deploy, copy and paste the content of the updated job definition file (nos_job_def/nosana_mastra.json) into the deployment form, and submit."
+
