@@ -23,15 +23,61 @@ We recommend reading the following sections to get started with how to create an
 - <https://mastra.ai/en/docs/agents/overview>
 - [Mastra Guide: Build an AI stock agent](https://mastra.ai/en/guides/guide/stock-agent)
 
-## Get Started
+## Super Quick Setup (2 minutes)
 
-To get started run the following command to start developing:
-We recommend using [pnpm](https://pnpm.io/installation), but you can try npm, or bun if you prefer.
-
-```sh
+```bash
+# 1. Setup
+git clone https://github.com/nosana-ai/agent-challenge
+cd agent-challenge
 pnpm install
+cp .env.example .env
+
+# 2. Choose your agent
+pnpm run create:calculator  # OR create:crypto OR create:github
+
+# 3. Test it
 pnpm run dev
+# Open http://localhost:8080
 ```
+
+## Test Your Agent
+
+### Calculator Agent
+
+```
+"Calculate 25 + 17"
+"What's 100 divided by 4?"
+"Multiply 12 by 8"
+```
+
+### Crypto Agent
+
+```
+"What's the current price of Bitcoin?"
+"Show me SOL price"
+"How much is Ethereum worth?"
+```
+
+### GitHub Agent
+
+```
+"Get stats for facebook/react"
+"Show me microsoft/typescript repository"
+"Analyze nosana-ai/nosana-cli stats"
+```
+
+## Deploy in 1 Command
+
+```bash
+# Replace 'yourusername' with your Docker Hub username
+./scripts/deploy-helper.sh yourusername
+```
+
+This will:
+
+1. Build Docker image
+2. Push to Docker Hub
+3. Update job definition
 
 ## Credits
 
