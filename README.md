@@ -1,6 +1,6 @@
 # Nosana and AI Builders Presents: BUIDL DAY @ TOKEN2049 🚀
 
-![Agent](https://nosana.com/img/logotype.svg)
+![Agent](./assets/NosanaSingapore2049XSmall.jpg)
 
 ## Topic
 
@@ -304,7 +304,7 @@ Ensure your agent responds correctly and all tools function properly within the 
 
 #### 3. Nosana Deployment
 
-- Deploy your Docker container on Nosana using the [Nosana Dashboard](https://dashboard.nosana.com/deploy).
+- Deploy your Docker container on Nosana using the [Nosana Dashboard](https://dashboard.nosana.)
 - Your agent must successfully run on the Nosana network
 - Include the Nosana job ID or deployment link
 
