@@ -1,6 +1,6 @@
 # Nosana and AI Builders Presents: BUIDL DAY @ TOKEN2049 🚀
 
-![Agent-101](./assets/NosanaBuildersChallengeAgents.jpg)
+![Agent](https://nosana.com/img/logotype.svg)
 
 ## Topic
 
@@ -141,18 +141,145 @@ MODEL_NAME_AT_ENDPOINT=qwen2.5:1.5b
 API_BASE_URL= https://dashboard.nosana.com/jobs/GPVMUckqjKR6FwqnxDeDRqbn34BH7gAa5xWnWuNH1drf
 ```
 
-### Testing your Agent
+## Choose Your Agent (10 minutes)
 
-You can read the [Mastra Documentation: Playground](https://mastra.ai/en/docs/local-dev/mastra-dev) to learn more on how to test your agent locally.
-Before deploying your agent to Nosana, it's crucial to thoroughly test it locally to ensure everything works as expected. Follow these steps to validate your agent:
+Pick ONE from these pre-built templates:
 
-**Local Testing:**
+### Option A: Calculator Agent (Beginner)
+
+```bash
+pnpm run create:calculator
+```
+
+- Performs math operations
+- Explains calculations step-by-step
+- **Skills needed**: Basic TypeScript
+
+### Option B: Crypto Price Agent (Intermediate)
+
+```bash
+pnpm run create:crypto
+```
+
+- Fetches live cryptocurrency prices
+- Compares price changes
+- **Skills needed**: API calls, JSON parsing
+
+### Option C: GitHub Stats Agent (Advanced)
+
+```bash
+pnpm run create:github
+```
+
+- Fetches repository statistics
+- Analyzes commit history
+- **Skills needed**: GitHub API, data processing
+
+## Implementation Timeline (3 hours)
+
+### 1: Build Your Agent
+
+1. **0:00-0:15** - Setup and choose template
+2. **0:15-1:45** - Implement your tool function and test locally at http://localhost:8080
+
+### 2: Package and Deploy
+
+1. **1:45-2:00** - Build Docker container and push to Docker Hub
+
+Make sure you have a Docker Hub account, replace `yourusername` below with your Docker Hub username, and that you are logged into the docker cli.
+
+```bash
+docker build -t yourusername/my-agent:latest .
+docker run -p 8080:8080 yourusername/my-agent:latest
+```
+
+2. **2:00-2:00** - Push to Docker Hub
+
+   ```bash
+   docker login
+   docker push yourusername/my-agent:latest
+   ```
+
+### 3: Deploy to Nosana
+
+1. **2:00-2:30** - Deploy on Nosana, see [#Quick Nosana Deployment](#quick-nosana-deployment) for details.
+2. **2:30-3:00** - Prepare your pitch
+
+## Quick Implementation Guide
+
+### Step 1: Edit Your Tool (30 mins)
+
+Location: `src/mastra/agents/[your-agent]/[your-agent]-tool.ts`
+
+```typescript
+// Example: Simple calculator tool
+export const calculatorTool = async ({
+  operation,
+  a,
+  b,
+}: {
+  operation: string;
+  a: number;
+  b: number;
+}) => {
+  switch (operation) {
+    case "add":
+      return { result: a + b, explanation: `${a} + ${b} = ${a + b}` };
+    case "subtract":
+      return { result: a - b, explanation: `${a} - ${b} = ${a - b}` };
+    case "multiply":
+      return { result: a * b, explanation: `${a} × ${b} = ${a * b}` };
+    case "divide":
+      return { result: a / b, explanation: `${a} ÷ ${b} = ${a / b}` };
+    default:
+      throw new Error("Unknown operation");
+  }
+};
+```
+
+### Step 2: Configure Your Agent (15 mins)
+
+Location: `src/mastra/agents/[your-agent]/[your-agent]-agent.ts`
+
+```typescript
+import { Agent } from "@mastra/core";
+import { calculatorTool } from "./calculator-tool";
+
+export const calculatorAgent = new Agent({
+  name: "Calculator Agent",
+  description: "Performs mathematical calculations",
+  tools: {
+    calculator: {
+      description: "Perform math operations",
+      parameters: {
+        operation: { type: "string", required: true },
+        a: { type: "number", required: true },
+        b: { type: "number", required: true },
+      },
+      execute: calculatorTool,
+    },
+  },
+});
+```
+
+### Step 3: Test Your Agent (15 mins)
 
 1. **Start the development server** with `pnpm run dev` and navigate to `http://localhost:8080` in your browser
 2. **Test your agent's conversation flow** by interacting with it through the chat interface
 3. **Verify tool functionality** by triggering scenarios that call your custom tools
-4. **Check error handling** by providing invalid inputs or testing edge cases
-5. **Monitor the console logs** to ensure there are no runtime errors or warnings
+4. Try these prompts:
+
+- "Calculate 25 + 17"
+- "What's 100 divided by 4?"
+- "Multiply 12 by 8"
+
+5. **Check error handling** by providing invalid inputs or testing edge cases
+6. **Monitor the console logs** to ensure there are no runtime errors or warnings
+
+### Builder the container (15 mins)
+
+You can read the [Mastra Documentation: Playground](https://mastra.ai/en/docs/local-dev/mastra-dev) to learn more on how to test your agent locally.
+Before deploying your agent to Nosana, it's crucial to thoroughly test it locally to ensure everything works as expected. Follow these steps to validate your agent:
 
 **Docker Testing:**
 After building your Docker container, test it locally before pushing to the registry:
@@ -165,35 +292,6 @@ docker build -t yourusername/agent-challenge:latest .
 docker run -p 8080:8080 --env-file .env yourusername/agent-challenge:latest
 
 # Test the containerized agent at http://localhost:8080
-```
-
-Ensure your agent responds correctly and all tools function properly within the containerized environment. This step is critical as the Nosana deployment will use this exact container.
-
-### Submission Requirements
-
-#### 1. Code Development
-
-- Fork this repository and develop your AI agent
-- Your agent must include at least one custom tool (function)
-- Include environment variable examples in a `.env.example` file
-
-#### 2. Docker Container
-
-- Create a `Dockerfile` for your agent
-- Build and push your container to Docker Hub or GitHub Container Registry
-- Container must be publicly accessible
-
-##### Build, Run, Publish
-
-Note: You'll need an account on [Dockerhub](https://hub.docker.com/)
-
-```sh
-
-# Build and tag
-docker build -t yourusername/agent-challenge:latest .
-
-# Run the container locally
-docker run -p 8080:8080 yourusername/agent-challenge:latest
 
 # Login
 docker login
@@ -202,9 +300,11 @@ docker login
 docker push yourusername/agent-challenge:latest
 ```
 
+Ensure your agent responds correctly and all tools function properly within the containerized environment. This step is critical as the Nosana deployment will use this exact container.
+
 #### 3. Nosana Deployment
 
-- Deploy your Docker container on Nosana
+- Deploy your Docker container on Nosana using the [Nosana Dashboard](https://dashboard.nosana.com/deploy).
 - Your agent must successfully run on the Nosana network
 - Include the Nosana job ID or deployment link
 
