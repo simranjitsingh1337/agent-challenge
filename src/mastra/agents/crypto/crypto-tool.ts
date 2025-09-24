@@ -22,8 +22,9 @@ const mockPrices: Record<string, number> = {
   MATIC: 0.92,
 };
 
-export const cryptoPriceTool = async ({ symbol, currency = 'USD' }: CryptoPriceToolInput) => {
-  const upperSymbol = symbol.toUpperCase();
+export const cryptoPriceTool = async (context: any) => {
+  const { symbol, currency = 'USD' } = context.context || context.args || context;
+  const upperSymbol = String(symbol || '').toUpperCase();
   
   // For the 3-hour challenge, using mock data
   // Replace this with actual API call:

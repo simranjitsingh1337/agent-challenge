@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const agentType = process.argv[2];
 
@@ -13,13 +17,15 @@ if (!agentType || !['calculator', 'crypto', 'github'].includes(agentType)) {
 // Update the main index.ts to use the selected agent
 const indexPath = path.join(__dirname, '../src/mastra/index.ts');
 const agentIndexContent = `import { Mastra } from '@mastra/core';
-import { config } from './config';
 import { ${agentType}Agent } from './agents/${agentType}/${agentType}-agent';
 
 export const mastra = new Mastra({
-  config,
   agents: {
     ${agentType}: ${agentType}Agent,
+  },
+  server: {
+    port: 8080,
+    timeout: 10000,
   },
 });
 `;
@@ -27,12 +33,12 @@ export const mastra = new Mastra({
 fs.writeFileSync(indexPath, agentIndexContent);
 
 console.log(`✅ ${agentType.charAt(0).toUpperCase() + agentType.slice(1)} agent configured!`);
-console.log(`🚀 Run "pnpm run dev" to start development`);
+console.log(`🚀 Run "npm run dev" to start development`);
 console.log(`🌐 Open http://localhost:8080 to test your agent`);
 console.log('');
 console.log('Quick test prompts:');
 
-switch(agentType) {
+switch (agentType) {
   case 'calculator':
     console.log('  - "Calculate 25 + 17"');
     console.log('  - "What\'s 100 divided by 4?"');

@@ -8,7 +8,8 @@ export const githubStatsToolSchema = z.object({
 export type GitHubStatsToolInput = z.infer<typeof githubStatsToolSchema>;
 
 // Mock data for demonstration - replace with actual GitHub API calls
-export const githubStatsTool = async ({ owner, repo }: GitHubStatsToolInput) => {
+export const githubStatsTool = async (context: any) => {
+  const { owner, repo } = context.context || context.args || context;
   try {
     // For the 3-hour challenge, using mock data
     // Replace with actual GitHub API call:

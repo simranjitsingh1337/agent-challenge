@@ -1,4 +1,5 @@
 import { Agent } from '@mastra/core';
+import { model } from '../../config';
 import { githubStatsTool, githubStatsToolSchema } from './github-tool';
 
 export const githubAgent = new Agent({
@@ -8,13 +9,10 @@ export const githubAgent = new Agent({
     When users ask about GitHub repositories, use the GitHub stats tool to get the information.
     Always provide a clear summary of the repository's key metrics and health status.
     Format the owner/repo correctly (e.g., "facebook/react" or "microsoft/typescript").`,
-  model: {
-    provider: 'OPEN_AI',
-    name: process.env.MODEL_NAME_AT_ENDPOINT || 'qwen2.5:1.5b',
-    toolChoice: 'auto',
-  },
+  model,
   tools: {
     getGitHubStats: {
+      id: 'getGitHubStats',
       description: 'Get statistics and information about a GitHub repository',
       inputSchema: githubStatsToolSchema,
       execute: githubStatsTool,
