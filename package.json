@@ -12,9 +12,6 @@
     "lint": "biome lint ./src",
     "format": "biome format ./src/** --write",
     "check": "biome check ./src",
-    "create:calculator": "node scripts/create-agent.js calculator",
-    "create:crypto": "node scripts/create-agent.js crypto",
-    "create:github": "node scripts/create-agent.js github",
     "docker:build": "docker build -t agent-challenge:latest .",
     "docker:run": "docker run -p 8080:8080 --env-file .env agent-challenge:latest",
     "quick:deploy": "npm run docker:build && docker tag agent-challenge:latest $npm_config_username/agent-challenge:latest && docker push $npm_config_username/agent-challenge:latest"

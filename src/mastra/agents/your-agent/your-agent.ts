@@ -1,4 +1,4 @@
-import { Agent } from "@mastra/core/agent";
+import { Agent } from "@mastra/core";
 import { model } from "../../config";
 import { yourTool } from "../your-agent/your-tool";
 
