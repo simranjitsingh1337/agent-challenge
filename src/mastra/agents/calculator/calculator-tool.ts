@@ -22,28 +22,41 @@ export const calculatorTool = async (context: any) => {
   let result: number;
   let explanation: string;
 
-  const isAdd = op === 'add' || op === 'addition' || op === 'sum' || op === '+';
-  const isSub = op === 'subtract' || op === 'subtraction' || op === 'minus' || op === '-';
-  const isMul = op === 'multiply' || op === 'multiplication' || op === '*' || op === 'x' || op === '×';
-  const isDiv = op === 'divide' || op === 'division' || op === '/' || op === '÷';
-
-  if (isAdd) {
-    result = left + right;
-    explanation = `Adding ${left} + ${right} = ${result}`;
-  } else if (isSub) {
-    result = left - right;
-    explanation = `Subtracting ${left} - ${right} = ${result}`;
-  } else if (isMul) {
-    result = left * right;
-    explanation = `Multiplying ${left} × ${right} = ${result}`;
-  } else if (isDiv) {
-    if (right === 0) {
-      throw new Error('Cannot divide by zero');
-    }
-    result = left / right;
-    explanation = `Dividing ${left} ÷ ${right} = ${result}`;
-  } else {
-    throw new Error('Unknown operation');
+  switch (op) {
+    case 'add':
+    case 'addition':
+    case 'sum':
+    case '+':
+      result = left + right;
+      explanation = `Adding ${left} + ${right} = ${result}`;
+      break;
+    case 'subtract':
+    case 'subtraction':
+    case 'minus':
+    case '-':
+      result = left - right;
+      explanation = `Subtracting ${left} - ${right} = ${result}`;
+      break;
+    case 'multiply':
+    case 'multiplication':
+    case '*':
+    case 'x':
+    case '×':
+      result = left * right;
+      explanation = `Multiplying ${left} × ${right} = ${result}`;
+      break;
+    case 'divide':
+    case 'division':
+    case '/':
+    case '÷':
+      if (right === 0) {
+        throw new Error('Cannot divide by zero');
+      }
+      result = left / right;
+      explanation = `Dividing ${left} ÷ ${right} = ${result}`;
+      break;
+    default:
+      throw new Error('Unknown operation');
   }
 
   return {
