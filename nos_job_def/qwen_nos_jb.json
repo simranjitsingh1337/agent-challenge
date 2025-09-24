@@ -45,7 +45,7 @@
   ],
   "meta": {
     "system_requirements": {
-      "required_vram": 24
+      "required_vram": 20
     }
   },
   "type": "container",
