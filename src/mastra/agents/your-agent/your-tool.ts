@@ -1,4 +1,4 @@
-import { createTool } from "@mastra/core/tools";
+import { createTool } from "@mastra/core";
 import { z } from "zod";
 
 // Simple async function that conforms to input and output schema
@@ -16,7 +16,7 @@ export const yourTool = createTool({
     bar: z.number(),
     baz: z.string(),
   }),
-  execute: async ({ context }) => {
+  execute: async ({ context }: { context: { foo: string } }) => {
     return await getInfo(context.foo);
   },
 });

@@ -4,24 +4,18 @@
       "id": "agents",
       "args": {
         "gpu": true,
-        "image": "docker.io/yourusername/agent-challenge:latest",
+        "image": "k1llahkeezy/agent-challenge:0.0.2",
         "expose": [
           {
             "port": 8080
           }
-        ],
-        "entrypoint": [
-          "/bin/sh"
         ]
       },
       "type": "container/run"
     }
   ],
   "meta": {
-    "trigger": "dashboard",
-    "system_requirements": {
-      "required_vram": 4
-    }
+    "trigger": "dashboard"
   },
   "type": "container",
   "version": "0.1"
