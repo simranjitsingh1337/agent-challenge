@@ -6,6 +6,9 @@ ENV POSTHOG_DISABLED=true
 ENV MASTRA_TELEMETRY_DISABLED=true
 ENV DO_NOT_TRACK=1
 
+# Ensure logs are visible (disable buffering)
+ENV PYTHONUNBUFFERED=1
+
 # Create app directory
 WORKDIR /app
 

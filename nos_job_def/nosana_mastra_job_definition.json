@@ -1,0 +1,46 @@
+{
+  "global": {
+    "env": {
+      "MODEL": "gpt-oss:20b"
+    }
+  },
+  "ops": [
+    {
+      "id": "agents",
+      "args": {
+        "image": "k1llahkeezy/agent-challenge:0.0.6",
+        "expose": 8080,
+        "env": {
+          "API_BASE_URL": "http://%%ops.ollama.host%%:11434"
+        }
+      },
+      "execution": {
+        "group": "run",
+        "depends_on": [
+          "ollama"
+        ]
+      },
+      "type": "container/run"
+    },
+    {
+      "id": "ollama",
+      "args": {
+        "gpu": true,
+        "image": "docker.io/ollama/ollama:0.12.0",
+        "cmd": [
+          "ollama serve & sleep 5 && ollama pull $MODEL && tail -f /dev/null"
+        ],
+        "entrypoint": [
+          "/bin/sh",
+          "-c"
+        ]
+      },
+      "execution": {
+        "group": "run"
+      },
+      "type": "container/run"
+    }
+  ],
+  "type": "container",
+  "version": "0.1"
+}
