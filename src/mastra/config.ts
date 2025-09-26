@@ -20,7 +20,7 @@ export const baseURL = rawBaseURL?.endsWith('/api')
 
 // Create and export the model instance
 export const model = createOllama({ baseURL }).chat(modelName, {
-  simulateStreaming: true,
+  simulateStreaming: false,
 });
 
 console.log(`ModelName: ${modelName}\nbaseURL: ${baseURL}`);
