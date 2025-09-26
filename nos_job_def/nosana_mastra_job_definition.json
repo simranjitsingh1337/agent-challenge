@@ -8,7 +8,7 @@
     {
       "id": "agents",
       "args": {
-        "image": "k1llahkeezy/agent-challenge:0.0.2",
+        "image": "k1llahkeezy/agent-challenge:0.0.6",
         "expose": 8080,
         "env": {
           "API_BASE_URL": "http://%%ops.ollama.host%%:11434"
