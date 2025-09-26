@@ -8,7 +8,7 @@
     {
       "id": "agents",
       "args": {
-        "image": "k1llahkeezy/agent-challenge:0.0.6",
+        "image": "k1llahkeezy/my-agent:0.0.2",
         "expose": 8080,
         "env": {
           "API_BASE_URL": "http://%%ops.ollama.host%%:11434"
@@ -38,7 +38,8 @@
           {
             "url": "https://models.nosana.io/ollama/gpt-oss/20b",
             "type": "S3",
-            "target": "/root/.ollama/models"
+            "target": "/root/.ollama/models",
+            "allowWrite": true
           }
         ]
       },
