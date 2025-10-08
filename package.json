@@ -1,41 +1,12 @@
 {
-  "name": "agent-challenge",
+  "name": "mastra-mcp-server-workshop-monorepo",
   "version": "1.0.0",
-  "main": ".mastra/output/index.mjs",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy:agent": "nosana job post --file ./nos_job_def/nosana_mastra.json --market nvidia-3090 --timeout 30",
-    "deploy:qwen": "nosana job post --file ./nos_job_def/qwen_nos_jb.json --market nvidia-3090 --timeout 30",
-    "dev": "mastra dev",
-    "build": "mastra build",
-    "start": "mastra start",
-    "lint": "biome lint ./src",
-    "format": "biome format ./src/** --write",
-    "check": "biome check ./src",
-    "docker:build": "docker build -t agent-challenge:latest .",
-    "docker:run": "docker run -p 8080:8080 --env-file .env agent-challenge:latest",
-    "quick:deploy": "npm run docker:build && docker tag agent-challenge:latest $npm_config_username/agent-challenge:latest && docker push $npm_config_username/agent-challenge:latest"
+    "dev:mcp": "pnpm --filter mcp-server mastra:dev",
+    "dev:web": "pnpm --filter  \"./packages/web\" next:dev",
+    "dev:agent": "pnpm --filter  \"./packages/web\" mastra:dev",
+    "build": "pnpm --parallel --filter web build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "type": "module",
-  "engines": {
-    "node": ">=20.9.0"
-  },
-  "dependencies": {
-    "@ai-sdk/openai": "^1.3.22",
-    "@mastra/core": "0.18.0",
-    "dotenv": "^16.5.0",
-    "ollama-ai-provider": "^1.2.0",
-    "zod": "^3.25.67"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.0.4",
-    "@nosana/cli": "^1.0.52",
-    "@types/node": "^24.0.3",
-    "mastra": "0.13.2",
-    "typescript": "^5.8.3"
-  }
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
 }
