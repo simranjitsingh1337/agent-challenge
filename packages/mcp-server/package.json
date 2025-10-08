@@ -1,0 +1,27 @@
+{
+  "name": "mcp-server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "mastra build",
+    "mastra:dev": "mastra dev"
+  },
+  "dependencies": {
+    "@mastra/core": "alpha",
+    "@mastra/loggers": "alpha",
+    "@mastra/mcp": "alpha",
+    "@types/unist": "^3.0.3",
+    "gray-matter": "^4.0.3",
+    "mastra": "alpha",
+    "pino": "^9.2.0",
+    "pino-pretty": "^11.2.1",
+    "remark-parse": "^11.0.0",
+    "tsx": "^4.19.4",
+    "unified": "^11.0.5",
+    "zod": "^3.25.57"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}
