@@ -29,7 +29,7 @@ export const getMcpClient = () => {
     mcpInstance.resources.onListChanged('notes', () => {
       eventEmitter.emit('notes-changed', { type: 'list-changed' });
     });
-    
+
     mcpInstance.resources.onUpdated('notes', (params) => {
       const title = params.uri.replace('notes://', '');
       eventEmitter.emit('notes-changed', { type: 'update', payload: { title } });

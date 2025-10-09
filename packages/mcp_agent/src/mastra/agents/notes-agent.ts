@@ -1,6 +1,7 @@
 import { Agent } from "@mastra/core/agent";
 import { openai } from "@ai-sdk/openai";
-import { notes } from "../mcp/server";
+import { writeNote } from "../tools/write-note";
+
 
 export const notesAgent = new Agent({
   name: "Notes Agent",
@@ -56,5 +57,7 @@ Task: Generate 3–5 new ideas related to the note.
 Use a sub‑heading for each idea and one‑line rationale bullets beneath.
 `,
   model: openai("gpt-4o"),
-  tools: notes.toolsSchema,
+  tools: {
+    writeNote
+  }
 });

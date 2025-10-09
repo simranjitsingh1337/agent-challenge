@@ -18,6 +18,7 @@ export const writeNote = createTool({
   }),
   execute: async ({ context }) => {
     try {
+      console.log("Writing note with context:", context);
       const { title, content } = context;
       const filePath = path.join(NOTES_DIR, `${title}.md`);
       await fs.mkdir(NOTES_DIR, { recursive: true });
@@ -35,6 +36,3 @@ export const writeNote = createTool({
   },
 });
 
-export const tools = {
-  writeNote
-} 
