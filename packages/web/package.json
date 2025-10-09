@@ -6,6 +6,7 @@
     "dev": "pnpm mastra:dev && pnpm next:dev",
     "next:dev": "next dev",
     "mastra:dev": "mastra dev",
+    "mastra:build": "mastra build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -55,4 +56,4 @@
     "typescript": "^5",
     "zod": "^3.25.57"
   }
-} 
+}

@@ -8,6 +8,8 @@ import { mastra } from "@/mastra";
 
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic';
+
 const allowedOrigins = ['http://localhost:3000'];
 
 const corsHeaders = (origin: string) => ({

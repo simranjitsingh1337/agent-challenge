@@ -2,10 +2,14 @@ import { Agent } from "@mastra/core/agent";
 import { openai } from "@ai-sdk/openai";
 import { getMcpClient } from "../mcp/client";
 
-export const notesAgent = new Agent({
-    name: "Notes Agent",
-    instructions: `
-    You are NotePilot, a meticulous personal‑knowledge assistant.
+let _notesAgent: Agent | null = null;
+
+export const getNotesAgent = async () => {
+  if (!_notesAgent) {
+    _notesAgent = new Agent({
+      name: "Notes Agent",
+      instructions: `
+      You are NotePilot, a meticulous personal‑knowledge assistant.
 
 ### High‑level goals
 1. Help the user capture clear, well‑structured Markdown notes.
@@ -32,7 +36,7 @@ export const notesAgent = new Agent({
 
 Short reminders
 	•	Prefer single‑paragraph summaries over long prose.
-	•	Don’t repeat entire existing notes back to the user; link instead.
+	•	Don't repeat entire existing notes back to the user; link instead.
 	•	Be graceful: if user asks for something that already exists, offer to append.
 
 ---
@@ -41,20 +45,31 @@ Short reminders
 
 Add these **assistant‑side loaders** only when you call the corresponding action.
 
-*Create new note*  
+*Create new note*
 \`\`\`text
-Context: The user wants to capture a fresh idea.  
+Context: The user wants to capture a fresh idea.
 Outcome: You will call \`create_note\` exactly once with a good title slug and full Markdown body.
 
 Summarise note
 
-Task: Summarise the key points of the note in ≤ 5 bullets.  
+Task: Summarise the key points of the note in ≤ 5 bullets.
 
 Brainstorm ideas
 
-Task: Generate 3–5 new ideas related to the note.  
+Task: Generate 3–5 new ideas related to the note.
 Use a sub‑heading for each idea and one‑line rationale bullets beneath.
 `,
-    model: openai("gpt-4o"),
-    tools: await getMcpClient().getTools(),
-}); 
+      model: openai("gpt-4o"),
+      tools: await getMcpClient().getTools(),
+    });
+  }
+  return _notesAgent;
+};
+
+// For backwards compatibility during build
+export const notesAgent = new Agent({
+  name: "Notes Agent",
+  instructions: "Notes Agent",
+  model: openai("gpt-4o"),
+  tools: {},
+});
