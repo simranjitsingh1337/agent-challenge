@@ -3,6 +3,7 @@ import { writeNote } from "../tools/write-note";
 import { resourceHandlers } from "./resources";
 import eventEmitter from "../../lib/events";
 import { promptHandlers } from "./prompts";
+import { notesAgent } from "../agents/notes-agent";
 
 export const notes = new MCPServer({
   name: "NotesMCP",
@@ -10,6 +11,9 @@ export const notes = new MCPServer({
   resources: resourceHandlers,
   tools: {
     writeNote
+  },
+  agents: {
+    notesAgent
   },
   prompts: promptHandlers,
 });
