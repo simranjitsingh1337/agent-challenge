@@ -1,13 +1,12 @@
 {
-  "name": "mastra-mcp-server-workshop-monorepo",
+  "name": "nosana-mastra-agent-102",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev:mcp": "pnpm --filter mcp-server mastra:dev",
-    "dev:agent": "pnpm --filter ./packages/mastra_agent/ mastra:dev",
+    "dev:mastra": "pnpm --filter ./packages/mcp_agent/ dev",
+    "build:mastra": "pnpm --filter build",
     "dev:web": "pnpm --filter ./packages/web dev",
     "build:web": "pnpm --filter ./packages/web build",
-    "build:mcp": "pnpm --filter mcp-server build",
     "start:web": "pnpm --filter ./packages/web start"
   },
   "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
