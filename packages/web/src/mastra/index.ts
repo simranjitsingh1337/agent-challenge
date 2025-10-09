@@ -1,11 +1,9 @@
 import { Mastra } from "@mastra/core/mastra";
-import { notesAgent } from "./agents";
 import { PinoLogger } from "@mastra/loggers";
 
+// Web package doesn't need agents directly - they're served by the MCP server
+// This instance is used for client-side Mastra operations
 export const mastra = new Mastra({
-  agents: {
-    notesAgent,
-  },
   logger: new PinoLogger({
     name: "mastra",
     level: "debug",

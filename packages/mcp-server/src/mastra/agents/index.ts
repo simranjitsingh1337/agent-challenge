@@ -1,15 +1,11 @@
 import { Agent } from "@mastra/core/agent";
 import { openai } from "@ai-sdk/openai";
-import { getMcpClient } from "../mcp/client";
+import { notes } from "../mcp/server";
 
-let _notesAgent: Agent | null = null;
-
-export const getNotesAgent = async () => {
-  if (!_notesAgent) {
-    _notesAgent = new Agent({
-      name: "Notes Agent",
-      instructions: `
-      You are NotePilot, a meticulous personal‑knowledge assistant.
+export const notesAgent = new Agent({
+  name: "Notes Agent",
+  instructions: `
+  You are NotePilot, a meticulous personal‑knowledge assistant.
 
 ### High‑level goals
 1. Help the user capture clear, well‑structured Markdown notes.
@@ -59,17 +55,6 @@ Brainstorm ideas
 Task: Generate 3–5 new ideas related to the note.
 Use a sub‑heading for each idea and one‑line rationale bullets beneath.
 `,
-      model: openai("gpt-4o"),
-      tools: await getMcpClient().getTools(),
-    });
-  }
-  return _notesAgent;
-};
-
-// For backwards compatibility during build
-export const notesAgent = new Agent({
-  name: "Notes Agent",
-  instructions: "Notes Agent",
   model: openai("gpt-4o"),
-  tools: {},
+  tools: notes.toolsSchema,
 });
