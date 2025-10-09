@@ -4,7 +4,7 @@ import {
   OpenAIAdapter,
 } from "@copilotkit/runtime";
 import { getAGUI } from "@mastra/agui";
-import { mastra } from "@/mastra";
+import { mastra } from "../../../../../mcp_agent/src/mastra";
 
 import { NextRequest, NextResponse } from "next/server";
 
@@ -13,14 +13,14 @@ export const dynamic = 'force-dynamic';
 const allowedOrigins = ['http://localhost:3000'];
 
 const corsHeaders = (origin: string) => ({
-    'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-CopilotKit-Verbose, x-copilotkit-copilot-id, x-copilotkit-cloud-project-id, x-copilotkit-chat-id, x-copilotkit-parent-id, x-copilotkit-root-id, x-copilotkit-runtime-client-gql-version, x-copilotkit-sequence-id',
+  'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-CopilotKit-Verbose, x-copilotkit-copilot-id, x-copilotkit-cloud-project-id, x-copilotkit-chat-id, x-copilotkit-parent-id, x-copilotkit-root-id, x-copilotkit-runtime-client-gql-version, x-copilotkit-sequence-id',
 });
 
 export async function OPTIONS(req: NextRequest) {
-    const origin = req.headers.get('origin') ?? '';
-    return NextResponse.json({}, { headers: corsHeaders(origin) });
+  const origin = req.headers.get('origin') ?? '';
+  return NextResponse.json({}, { headers: corsHeaders(origin) });
 }
 
 export const POST = async (req: NextRequest) => {
@@ -49,7 +49,7 @@ export const POST = async (req: NextRequest) => {
   const origin = req.headers.get('origin') ?? '';
   const headers = corsHeaders(origin);
   Object.entries(headers).forEach(([key, value]) => {
-      response.headers.set(key, value);
+    response.headers.set(key, value);
   });
   return response;
 };
