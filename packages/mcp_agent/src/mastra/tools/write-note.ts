@@ -2,12 +2,8 @@ import { z } from "zod";
 import { createTool } from "@mastra/core/tools";
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from 'url';
 import eventEmitter from "../../lib/events";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const NOTES_DIR = path.resolve(__dirname, "../../../notes");
+import { NOTES_DIR } from "../constants";
 
 export const writeNote = createTool({
   id: "write_note",

@@ -1,11 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from 'url';
 import { MCPServerResources, Resource } from "@mastra/mcp";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const NOTES_DIR = path.resolve(__dirname, "../../../notes");
+import { NOTES_DIR } from "../constants";
 
 const list = async (): Promise<Resource[]> => {
   try {

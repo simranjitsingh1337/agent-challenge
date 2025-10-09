@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev:mcp": "pnpm --filter mcp-server mastra:dev",
+    "dev:agent": "pnpm --filter ./packages/mastra_agent/ mastra:dev",
     "dev:web": "pnpm --filter ./packages/web dev",
     "build:web": "pnpm --filter ./packages/web build",
     "build:mcp": "pnpm --filter mcp-server build",
