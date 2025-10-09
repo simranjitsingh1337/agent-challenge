@@ -5,6 +5,7 @@ import { writeNote } from "../tools/write-note";
 
 export const notesAgent = new Agent({
   name: "Notes Agent",
+  description: "An agent that helps the user manage and create personal knowledge notes",
   instructions: `
   You are NotePilot, a meticulous personal‑knowledge assistant.
 
