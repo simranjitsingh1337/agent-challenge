@@ -1,18 +1,47 @@
 {
-  "name": "nosana-mastra-agent-102",
-  "version": "1.0.0",
+  "name": "starter",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:mastra": "pnpm --filter ./packages/mcp_agent/ dev",
-    "build:mastra": "pnpm --filter build",
-    "dev:web": "pnpm --filter ./packages/web dev",
-    "build:web": "pnpm --filter ./packages/web build",
-    "start:web": "pnpm --filter ./packages/web start"
+    "dev": "next dev --turbopack",
+    "dev:agent": "mastra dev",
+    "dev:ui": "next dev --turbopack",
+    "dev:debug": "LOG_LEVEL=debug npm run dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
-  "pnpm": {
-    "overrides": {
-      "@ag-ui/client": "0.0.28"
-    }
+  "dependencies": {
+    "@ag-ui/mastra": "0.1.0",
+    "@ai-sdk/openai": "^2.0.42",
+    "@copilotkit/react-core": "1.10.6",
+    "@copilotkit/react-textarea": "1.10.6",
+    "@copilotkit/react-ui": "1.10.6",
+    "@copilotkit/runtime": "1.10.5",
+    "@libsql/client": "^0.15.15",
+    "@mastra/client-js": "0.14.1",
+    "@mastra/core": "0.19.1",
+    "@mastra/libsql": "0.15.0",
+    "@mastra/mcp": "^0.13.4",
+    "@mastra/memory": "0.15.4",
+    "libsql": "^0.5.22",
+    "mastra": "0.13.4",
+    "next": ">=15.5.4",
+    "ollama-ai-provider-v2": "^1.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^9.1.2",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
