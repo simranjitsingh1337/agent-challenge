@@ -130,15 +130,16 @@ pnpm run dev:ui      # Start UI server (port 3000)
 pnpm run dev:agent   # Start Mastra agent server (port 4111)
 ```
 
-Open http://localhost:3000 to see your agent in action!
+Open <http://localhost:3000> to see your agent in action in the frontend.
+Open <http://localhost:4111> to open up the Mastra Agent Playground.
 
 
 ## 🏗️ Implementation Timeline
 
 **Important Dates:**
-- Registration Deadline: [TBD]
-- Submission Deadline: [TBD]
-- Winners Announced: [TBD]
+- Start Challenge: 10 October
+- Submission Deadline: 24 October
+- Winners Announced: 31 October
 
 ### Phase 1: Development
 1. **Setup** : Fork repo, install dependencies, choose template
@@ -152,14 +153,14 @@ Open http://localhost:3000 to see your agent in action!
 
 ```bash
 # Build your container (using the provided Dockerfile)
-docker build -t yourusername/my-agent:0.0.0 .
+docker build -t yourusername/agent-challenge:latest .
 
 # Test locally first
-docker run -p 3000:3000 yourusername/my-agent:0.0.0
+docker run -p 3000:3000 yourusername/agent-challenge:latest 
 
 # Push to Docker Hub
 docker login
-docker push yourusername/my-agent:0.0.0
+docker push yourusername/agent-challenge:latest
 ```
 
 ### Phase 3: Deployment to Nosana
@@ -229,7 +230,7 @@ Your submission **must** include:
 3. Edit `nos_job_def/nosana_mastra.json` with your Docker image:
    ```json
    {
-     "image": "yourusername/agent-challenge:0.0.0"
+     "image": "yourusername/agent-challenge:latest"
    }
    ```
 4. Copy and paste the edited job definition
