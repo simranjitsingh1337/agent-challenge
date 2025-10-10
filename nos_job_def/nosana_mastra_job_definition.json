@@ -1,7 +1,7 @@
 {
   "global": {
     "env": {
-      "MODEL": "gpt-oss:20b"
+      "MODEL": "qwen3:8b"
     }
   },
   "ops": [
@@ -36,7 +36,7 @@
         ],
         "resources": [
           {
-            "url": "https://models.nosana.io/ollama/gpt-oss/20b",
+            "url": "https://models.nosana.io/ollama/qwen3/8b",
             "type": "S3",
             "target": "/root/.ollama/models",
             "allowWrite": true
