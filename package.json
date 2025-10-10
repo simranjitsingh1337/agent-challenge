@@ -10,7 +10,9 @@
     "start:ui": "next start",
     "build:agent": "mastra build",
     "start:agent": "mastra start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build": "mastra build && next build",
+    "start": "mastra start & next start &"
   },
   "dependencies": {
     "@ag-ui/mastra": "0.1.0",
