@@ -8,10 +8,11 @@
     {
       "id": "agents",
       "args": {
-        "image": "k1llahkeezy/my-agent:0.0.2",
-        "expose": 8080,
+        "image": "djmbritt/agent-challenge:latest",
+        "expose": 3000,
         "env": {
-          "API_BASE_URL": "http://%%ops.ollama.host%%:11434"
+          "OLLAMA_API_URL": "http://%%ops.ollama.host%%:11434/api",
+          "MODEL_NAME_AT_ENDPOINT": "qwen3:8b"
         }
       },
       "execution": {
