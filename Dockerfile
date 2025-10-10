@@ -1,4 +1,11 @@
-FROM node:20
+# syntax=docker/dockerfile:1
+
+FROM node:lts AS build
+
+RUN corepack enable
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 
 # Disable Analytics/Telemetry
 ENV DISABLE_TELEMETRY=true
@@ -9,20 +16,37 @@ ENV DO_NOT_TRACK=1
 # Ensure logs are visible (disable buffering)
 ENV PYTHONUNBUFFERED=1
 
-# Create app directory
 WORKDIR /app
 
-# Copy package files
-COPY package.json package-lock.json ./
+COPY pnpm-lock.yaml ./
 
-# Install dependencies
-RUN npm ci
+RUN --mount=type=cache,target=/pnpm/store \
+  pnpm fetch --frozen-lockfile
 
-# Copy the rest of the application
+COPY package.json ./
+
+RUN --mount=type=cache,target=/pnpm/store \
+  pnpm install --frozen-lockfile --prod --offline
+
 COPY . .
 
-# Expose port
-EXPOSE 8080
+RUN pnpm build
 
-# Start Mastra dev server
-CMD ["npm", "run", "dev"]
+FROM node:lts AS runtime
+
+RUN groupadd -g 1001 appgroup && \
+  useradd -u 1001 -g appgroup -m -d /app -s /bin/false appuser
+
+WORKDIR /app
+
+COPY --from=build --chown=appuser:appgroup /app ./
+
+ENV NODE_ENV=production \
+  NODE_OPTIONS="--enable-source-maps"
+
+USER appuser
+
+EXPOSE 3000
+EXPOSE 4111
+
+ENTRYPOINT ["npm", "start"]
