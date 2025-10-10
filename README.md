@@ -260,21 +260,15 @@ Submissions evaluated on 4 key areas (25% each):
 
 For more information, check out the following resources:
 
+- [Nosana Documentation](https://docs.nosana.io)
 - [Mastra Documentation](https://mastra.ai/en/docs) - Learn more about Mastra and its features
 - [CopilotKit Documentation](https://docs.copilotkit.ai) - Explore CopilotKit's capabilities
 - [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API
-
-### Essential Reading
-
+- [Docker Documentation](https://docs.docker.com)
+- [Nosana CLI](https://github.com/nosana-ci/nosana-cli)
 - [Mastra Agents Overview](https://mastra.ai/en/docs/agents/overview)
 - [Build an AI Stock Agent Guide](https://mastra.ai/en/guides/guide/stock-agent)
 - [Mastra Tool Calling Documentation](https://mastra.ai/en/docs/agents/tools)
-
-### Documentation Links
-- [Nosana Documentation](https://docs.nosana.io)
-- [Mastra Documentation](https://mastra.ai/docs)
-- [Docker Documentation](https://docs.docker.com)
-- [Nosana CLI](https://github.com/nosana-ci/nosana-cli)
 
 ## 🆘 Support & Community
 
