@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { openai } from "@ai-sdk/openai";
 import { createOllama } from "ollama-ai-provider-v2";
 import { Agent } from "@mastra/core/agent";
@@ -11,7 +12,7 @@ export const AgentState = z.object({
 });
 
 const ollama = createOllama({
-  baseURL: process.env.OLLAMA_API_URL || "http://127.0.0.1:11434/api"
+  baseURL: process.env.OLLAMA_API_URL || "https://5fzrcq47xmrhzugtefoyegr27gbczkbtnxuxsbqws9dw.node.k8s.prd.nos.ci/api",
 })
 
 export const weatherAgent = new Agent({
