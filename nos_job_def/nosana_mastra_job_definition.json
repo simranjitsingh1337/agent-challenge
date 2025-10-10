@@ -50,6 +50,12 @@
       "type": "container/run"
     }
   ],
+  "meta": {
+    "trigger": "dashboard",
+    "system_requirements": {
+      "required_vram": 24
+    }
+  },
   "type": "container",
   "version": "0.1"
 }
