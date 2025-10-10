@@ -1,4 +1,4 @@
-# Nosana and AI Builders Presents: BUIDL DAY @ TOKEN2049 🚀
+# Nosana and Mastra present: Builders' Challenge #3: AI Agents 102
 
 ![Agent](./assets/NosanaBuildersChallenge03.jpg)
 
