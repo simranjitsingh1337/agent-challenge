@@ -27,6 +27,20 @@ This is a starter template for building AI agents using [Mastra](https://mastra.
 
 ## Getting Started
 
+### Prerequisites & Registration
+
+To participate in the challenge and get Nosana credits/NOS tokens, complete these steps:
+
+1. Register at [SuperTeam](https://earn.superteam.fun/listing/nosana-builders-challenge-agents-102)
+2. Register at the [Luma Page](https://luma.com/zkob1iae)
+3. Star these repos:
+   - [this repo](https://github.com/nosana-ci/agent-challenge)
+   - [Nosana CLI](https://github.com/nosana-ci/nosana-cli)
+   - [Nosana SDK](https://github.com/nosana-ci/nosana-sdk)
+4. Complete [this registration form](https://e86f0b9c.sibforms.com/serve/MUIFALaEjtsXB60SDmm1_DHdt9TOSRCFHOZUSvwK0ANbZDeJH-sBZry2_0YTNi1OjPt_ZNiwr4gGC1DPTji2zdKGJos1QEyVGBzTq_oLalKkeHx3tq2tQtzghyIhYoF4_sFmej1YL1WtnFQyH0y1epowKmDFpDz_EdGKH2cYKTleuTu97viowkIIMqoDgMqTD0uBaZNGwjjsM07T)
+
+### Setup
+
 0. **Fork** this repository to your own GitHub account, then clone it locally.
 
 ```bash
@@ -35,7 +49,6 @@ cd agent-challenge
 
 cp .env.example .env
 ```
-
 
 1a. Use Local LLM (Optional)
 
@@ -57,7 +70,7 @@ ollama serve
 
 1b. Use Nosana LLM Endpoint (Recommended)
 
-There is a dedicated LLM endpoint for the challenge hosted on Nosana. You ca use it for free during the challenge.
+There is a dedicated LLM endpoint for the challenge hosted on Nosana. You can use it for free during the challenge.
 If it goes down, please reach out on [Discord](https://discord.com/channels/236263424676331521/1354391113028337664)
 
 Otherwise you can deploy your own Qwen3:8b model on Nosana.
@@ -72,7 +85,7 @@ MODEL_NAME_AT_ENDPOINT=qwen3:8b
 
 ```
 
-🚀 Deploying to Nosana
+🚀 Deploying LLM
 
 #### Prerequisites
 
@@ -137,22 +150,27 @@ Mastra server will run on port `4111` and the UI server on port `3000`.
 
 ## 🏗️ Implementation Timeline
 
+**Important Dates:**
+- Registration Deadline: [TBD]
+- Submission Deadline: [TBD]
+- Winners Announced: [TBD]
+
 ### Phase 1: Development
 1. **Setup** : Fork repo, install dependencies, choose template
 2. **Build** : Implement your tool functions and agent logic
-3. **Test** : Validate functionality at http://localhost:8080
+3. **Test** : Validate functionality at http://localhost:3000
 
-### Phase 2: Containerization 
+### Phase 2: Containerization
 1. **Clean up**: Remove unused agents from `src/mastra/index.ts`
-2. **Build**: Create Docker container
+2. **Build**: Create Docker container using the provided `Dockerfile`
 3. **Test locally**: Verify container works correctly
 
 ```bash
-# Build your container
+# Build your container (using the provided Dockerfile)
 docker build -t yourusername/my-agent:0.0.0 .
 
 # Test locally first
-docker run -p 8080:8080 yourusername/my-agent:0.0.0
+docker run -p 3000:3000 yourusername/my-agent:0.0.0
 
 # Push to Docker Hub
 docker login
@@ -190,19 +208,14 @@ docker push yourusername/my-agent:0.0.0
    - Link to your Docker container
    - Link to your video demo
    - Nosana deployment proof
-3. **Social Media Post**: Share your submission on X (Twitter), BlueSky, or LinkedIn
+3. **Social Media Post** (Required): Share your submission on X (Twitter), BlueSky, or LinkedIn
    - Tag @nosana_ai
    - Include a brief description of your agent
    - Add hashtag #NosanaAgentChallenge
-4. **Star the following repos**
-  - [this repo](https://github.com/nosana-ci/agent-challenge)
-  - [Nosana CLI](https://github.com/nosana-ci/nosana-cli)
-  - [Nosana SDK](https://github.com/nosana-ci/nosana-sdk)
-5. **Finalize your submission on the <https://earn.superteam.fun/listing/nosana-builders-challenge-agents-102> page**
-
-- Remember to add your forked GitHub repository link
-- Remember to add a link to your X post.
-- Submissions that do not meet all requirements will not be considered.
+4. **Finalize your submission on the [SuperTeam page](https://earn.superteam.fun/listing/nosana-builders-challenge-agents-102)**
+   - Add your forked GitHub repository link
+   - Add a link to your social media post
+   - Submissions that do not meet all requirements will not be considered
 
 
 
@@ -258,11 +271,11 @@ Submissions evaluated on 4 key areas (25% each):
 ## 🎁 Prizes
 
 **Top 10 submissions will be rewarded:**
-- 🥇 1st Place: $1.000 USDC
-- 🥈 2nd Place: $750 USDC  
+- 🥇 1st Place: $1,000 USDC
+- 🥈 2nd Place: $750 USDC
 - 🥉 3rd Place: $450 USDC
 - 🏅 4th Place: $200 USDC
-- 🏅 5th-10th Place: Prizes $100 USDC each
+- 🏅 5th-10th Place: $100 USDC each
 
 ## 📚 Learning Resources
 
