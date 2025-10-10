@@ -12,7 +12,7 @@
     "start:agent": "mastra start",
     "lint": "next lint",
     "build": "mastra build && next build",
-    "start": "mastra start & next start &"
+    "start": "concurrently \"npm:start:agent\" \"npm:start:ui\""
   },
   "dependencies": {
     "@ag-ui/mastra": "0.1.0",
