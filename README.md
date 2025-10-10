@@ -1,4 +1,5 @@
-# Nosana and Mastra present: Builders' Challenge #3: AI Agents 102
+# Builders' Challenge #3: AI Agents 102
+**Presented by Nosana and Mastra**
 
 ![Agent](./assets/NosanaBuildersChallenge03.jpg)
 
