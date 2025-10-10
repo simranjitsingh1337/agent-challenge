@@ -12,14 +12,14 @@ export const AgentState = z.object({
 });
 
 const ollama = createOllama({
-  baseURL: process.env.OLLAMA_API_URL || "https://5fzrcq47xmrhzugtefoyegr27gbczkbtnxuxsbqws9dw.node.k8s.prd.nos.ci/api",
+  baseURL: process.env.NOS_OLLAMA_API_URL || process.env.OLLAMA_API_URL,
 })
 
 export const weatherAgent = new Agent({
   name: "Weather Agent",
   tools: { weatherTool },
   // model: openai("gpt-4o"), // uncomment this line to use openai
-  model: ollama(process.env.MODEL_NAME_AT_ENDPOINT || "qwen3:8b"), // comment this line to use openai
+  model: ollama(process.env.NOS_MODEL_NAME_AT_ENDPOINT || process.env.MODEL_NAME_AT_ENDPOINT || "qwen3:8b"), // comment this line to use openai
   instructions: "You are a helpful assistant.",
   description: "An agent that can get the weather for a given location.",
   memory: new Memory({

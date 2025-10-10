@@ -11,8 +11,8 @@
         "image": "djmbritt/agent-challenge:latest",
         "expose": 3000,
         "env": {
-          "OLLAMA_API_URL": "http://%%ops.ollama.host%%:11434/api",
-          "MODEL_NAME_AT_ENDPOINT": "qwen3:8b"
+          "NOS_OLLAMA_API_URL": "http://%%ops.ollama.host%%:11434/api",
+          "NOS_MODEL_NAME_AT_ENDPOINT": "qwen3:8b"
         }
       },
       "execution": {
