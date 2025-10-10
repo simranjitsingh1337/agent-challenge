@@ -8,9 +8,33 @@ Build and deploy intelligent AI agents using the **Mastra framework** on the **N
 
 ## 🎯 Challenge Overview
 
-Create an AI agent that can perform real-world tasks through tool calling capabilities. You'll build TypeScript functions that enable your agent to make API calls, perform calculations, fetch data, and interact with external services.
+**Your Mission:** Build an intelligent AI agent with a frontend interface and deploy it on Nosana's decentralized network.
+
+### What You'll Build
+
+Create an AI agent that performs real-world tasks using:
+- **Mastra framework** for agent orchestration
+- **Tool calling** to interact with external services
+- **MCP (Model Context Protocol)** for enhanced capabilities
+- **Custom frontend** to showcase your agent's functionality
+
+### Agent Ideas & Examples
+
+The possibilities are endless! Here are some ideas to get you started:
+
+- 🤖 **Personal Assistant** - Schedule management, email drafting, task automation
+- 📊 **Data Analyst Agent** - Fetch financial data, generate insights, create visualizations
+- 🌐 **Web Researcher** - Aggregate information from multiple sources, summarize findings
+- 🛠️ **DevOps Helper** - Monitor services, automate deployments, manage infrastructure
+- 🎨 **Content Creator** - Generate social media posts, blog outlines, marketing copy
+- 🔍 **Smart Search** - Multi-source search with AI-powered result synthesis
+- 💬 **Customer Support Bot** - Answer FAQs, ticket routing, knowledge base queries
+
+**Be Creative!** The best agents solve real problems in innovative ways.
 
 ## Getting Started Template
+
+![frontend](./assets/nosanaMastraAgentKit.png)
 
 This is a starter template for building AI agents using [Mastra](https://mastra.ai) and [CopilotKit](https://copilotkit.ai). It provides a modern Next.js application with integrated AI capabilities and a beautiful UI.
 
@@ -39,113 +63,74 @@ To participate in the challenge and get Nosana credits/NOS tokens, complete thes
    - [Nosana SDK](https://github.com/nosana-ci/nosana-sdk)
 4. Complete [this registration form](https://e86f0b9c.sibforms.com/serve/MUIFALaEjtsXB60SDmm1_DHdt9TOSRCFHOZUSvwK0ANbZDeJH-sBZry2_0YTNi1OjPt_ZNiwr4gGC1DPTji2zdKGJos1QEyVGBzTq_oLalKkeHx3tq2tQtzghyIhYoF4_sFmej1YL1WtnFQyH0y1epowKmDFpDz_EdGKH2cYKTleuTu97viowkIIMqoDgMqTD0uBaZNGwjjsM07T)
 
-### Setup
+### Setup Your Development Environment
 
-0. **Fork** this repository to your own GitHub account, then clone it locally.
+**Step 1: Fork & Clone**
 
 ```bash
-git clone https://github.com/nosana-ai/agent-challenge
+# Fork this repo on GitHub, then clone your fork
+git clone https://github.com/YOUR-USERNAME/agent-challenge
 cd agent-challenge
-
 cp .env.example .env
 ```
 
-1a. Use Local LLM (Optional)
+**Step 2: Choose Your LLM for Development**
 
-Edit the `.env` file to use a local LLM endpoint
+Pick one option below to power your agent during development:
+
+#### Option A: Use Shared Nosana LLM Endpoint (Recommended - No Setup!)
+
+We provide a free LLM endpoint hosted on Nosana for development. Edit your `.env`:
 
 ```env
-# Qwen3:8b - LocalHost - Local Development
-# Note baseURL for Ollama needs to be appended with `/api`
-OLLAMA_API_URL=http://127.0.0.1:11434/api
-MODEL_NAME_AT_ENDPOINT=qwen3:0.6b
+# Qwen3:8b - Nosana Endpoint
+OLLAMA_API_URL=https://<nosana-url-id>.node.k8s.prd.nos.ci/api
+MODEL_NAME_AT_ENDPOINT=qwen3:8b
 ```
 
-Start Ollama server locally (make sure you have Ollama installed)
-```sh
-# https://ollama.com/download
+If it goes down, reach out on [Discord](https://discord.com/channels/236263424676331521/1354391113028337664)
+
+#### Option B: Use Local LLM
+
+Run Ollama locally (requires [Ollama installed](https://ollama.com/download)):
+
+```bash
 ollama pull qwen3:0.6b
 ollama serve
 ```
 
-1b. Use Nosana LLM Endpoint (Recommended)
-
-There is a dedicated LLM endpoint for the challenge hosted on Nosana. You can use it for free during the challenge.
-If it goes down, please reach out on [Discord](https://discord.com/channels/236263424676331521/1354391113028337664)
-
-Otherwise you can deploy your own Qwen3:8b model on Nosana.
-
-Edit the `.env` file to use the Nosana LLM endpoint
+Edit your `.env`:
 ```env
-# Qwen3:8b - Nosana Endpoint
-# Note baseURL for Ollama needs to be appended with `/api`
-OLLAMA_API_URL=https://<nosana-url-id>.node.k8s.prd.nos.ci/api
-MODEL_NAME_AT_ENDPOINT=qwen3:8b
-
-
+OLLAMA_API_URL=http://127.0.0.1:11434/api
+MODEL_NAME_AT_ENDPOINT=qwen3:0.6b
 ```
 
-🚀 Deploying LLM
+#### Option C: Use OpenAI
 
-#### Prerequisites
+Add to your `.env` and uncomment the OpenAI line in `src/mastra/agents/index.ts`:
 
-To get Nosana credits and NOS tokens for deployment, you need to:
-
-- Register at [SuperTeam](https://earn.superteam.fun/listing/nosana-builders-challenge-agents-102)
-- Register at the [Luma Page](https://luma.com/zkob1iae)
-- Star the following repos: 
-  - [this repo](https://github.com/nosana-ci/agent-challenge)
-  - [Nosana CLI](https://github.com/nosana-ci/nosana-cli)
-  - [Nosana SDK](https://github.com/nosana-ci/nosana-sdk)
-- Lastly register at [this form](https://e86f0b9c.sibforms.com/serve/MUIFALaEjtsXB60SDmm1_DHdt9TOSRCFHOZUSvwK0ANbZDeJH-sBZry2_0YTNi1OjPt_ZNiwr4gGC1DPTji2zdKGJos1QEyVGBzTq_oLalKkeHx3tq2tQtzghyIhYoF4_sFmej1YL1WtnFQyH0y1epowKmDFpDz_EdGKH2cYKTleuTu97viowkIIMqoDgMqTD0uBaZNGwjjsM07T)
-
-#### Using Nosana Dashboard
-
-1. Open [Nosana Dashboard](https://dashboard.nosana.com/deploy)
-2. Click `Expand` to open the job definition editor
-4. Copy and paste the job definition, `./nos_job_def/llm.json`
-5. Select a GPU, e.g. `nvidia-3090` (The Vram is needs to be >= 24GB for Qwen3:8b)
-6. Click `Deploy`
-
-#### Using Nosana CLI (Alternative)
-
-```bash
-npm install -g @nosana/cli
-nosana job post --file ./nos_job_def/nosana_mastra.json --market nvidia-3090 --timeout 30
+```env
+OPENAI_API_KEY=your-key-here
 ```
 
-1c. Add your OpenAI API key (Optional)
+**Step 3: Install Dependencies**
 
-```bash
-# OpenAI - Uncomment and add apikey to use OpenAI
-# Uncomment the corresponding line in `src/mastra/agents/index.ts` to use OpenAI
-# OPENAI_API_KEY=
-```
-
-2. Install dependencies using your preferred package manager:
 ```bash
 # Using pnpm (recommended)
 pnpm install
 
-# Using npm
+# Or use npm, yarn, or bun
 npm install
-
-# Using yarn
-yarn install
-
-# Using bun
-bun install
 ```
 
-2. Start the development server (assuming pnpm):
+**Step 4: Start Development**
+
 ```bash
-pnpm run dev:ui ## Start the UI server
-pnpm run dev:agent ## Start the Mastra server
+pnpm run dev:ui      # Start UI server (port 3000)
+pnpm run dev:agent   # Start Mastra agent server (port 4111)
 ```
 
-This will start both the UI and agent servers concurrently.
-
-Mastra server will run on port `4111` and the UI server on port `3000`.
+Open http://localhost:3000 to see your agent in action!
 
 
 ## 🏗️ Implementation Timeline
@@ -177,27 +162,43 @@ docker login
 docker push yourusername/my-agent:0.0.0
 ```
 
-### Phase 3: Deployment
-1. **Deploy to Nosana**: Use the provided job definition
-2. **Verify**: Ensure your agent runs on Nosana network
-3. **Submit**: Provide deployment details
+### Phase 3: Deployment to Nosana
+1. **Deploy your complete stack**: The provided `Dockerfile` will deploy:
+   - Your Mastra agent
+   - Your frontend interface
+   - An LLM to power your agent (all in one container!)
+2. **Verify**: Test your deployed agent on Nosana network
+3. **Capture proof**: Screenshot or get deployment URL for submission
 
-### Phase 4. Video Demo
+### Phase 4: Video Demo
 
-- Record a 1-3 minute video demonstrating:
-  - Your agent running on Nosana
-  - Key features and functionality
-  - Real-world use case demonstration
+Record a 1-3 minute video demonstrating:
+- Your agent **running on Nosana** (show the deployed version!)
+- Key features and functionality
+- The frontend interface in action
+- Real-world use case demonstration
 - Upload to YouTube, Loom, or similar platform
 
-### Phase 5. Documentation
+### Phase 5: Documentation
 
-- Update this README with:
-  - Agent description and purpose
-  - Setup instructions
-  - Environment variables required
-  - Docker build and run commands
-  - Example usage
+Update this README with:
+- Agent description and purpose
+- What tools/APIs your agent uses
+- Setup instructions
+- Environment variables required
+- Example usage and screenshots
+
+## ✅ Minimum Requirements
+
+Your submission **must** include:
+
+- [ ] **Agent with Tool Calling** - At least one custom tool/function
+- [ ] **Frontend Interface** - Working UI to interact with your agent
+- [ ] **Deployed on Nosana** - Complete stack running on Nosana network
+- [ ] **Docker Container** - Published to Docker Hub
+- [ ] **Video Demo** - 1-3 minute demonstration
+- [ ] **Updated README** - Clear documentation in your forked repo
+- [ ] **Social Media Post** - Share on X/BlueSky/LinkedIn with #NosanaAgentChallenge
 
 ## Submission Process
 
