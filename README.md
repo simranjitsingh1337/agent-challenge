@@ -35,20 +35,7 @@ The possibilities are endless! Here are some ideas to get you started:
 
 ## Getting Started Template
 
-![frontend](./assets/nosanaMastraAgentKit.png)
-
 This is a starter template for building AI agents using [Mastra](https://mastra.ai) and [CopilotKit](https://copilotkit.ai). It provides a modern Next.js application with integrated AI capabilities and a beautiful UI.
-
-## Prerequisites
-
-- Node.js 18+ 
-- Any of the following package managers:
-  - pnpm (recommended)
-  - npm
-  - yarn
-  - bun
-
-> **Note:** This repository ignores lock files (package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb) to avoid conflicts between different package managers. Each developer should generate their own lock file using their preferred package manager. After that, make sure to delete it from the .gitignore.
 
 ## Getting Started
 
@@ -66,20 +53,30 @@ To participate in the challenge and get Nosana credits/NOS tokens, complete thes
 
 ### Setup Your Development Environment
 
-**Step 1: Fork & Clone**
+#### **Step 1: Fork, Clone and Quickstart**
 
 ```bash
 # Fork this repo on GitHub, then clone your fork
 git clone https://github.com/YOUR-USERNAME/agent-challenge
+
 cd agent-challenge
+
 cp .env.example .env
+
+pnpm i
+
+pnpm run dev:ui      # Start UI server (port 3000)
+pnpm run dev:agent   # Start Mastra agent server (port 4111)
 ```
 
-**Step 2: Choose Your LLM for Development**
+Open <http://localhost:3000> to see your agent in action in the frontend.
+Open <http://localhost:4111> to open up the Mastra Agent Playground.
+
+#### **Step 2: Choose Your LLM for Development (Optional)**
 
 Pick one option below to power your agent during development:
 
-#### Option A: Use Shared Nosana LLM Endpoint (Recommended - No Setup!)
+##### Option A: Use Shared Nosana LLM Endpoint (Recommended - No Setup!)
 
 We provide a free LLM endpoint hosted on Nosana for development. Edit your `.env`:
 
@@ -91,7 +88,7 @@ MODEL_NAME_AT_ENDPOINT=qwen3:8b
 
 If it goes down, reach out on [Discord](https://discord.com/channels/236263424676331521/1354391113028337664)
 
-#### Option B: Use Local LLM
+##### Option B: Use Local LLM
 
 Run Ollama locally (requires [Ollama installed](https://ollama.com/download)):
 
@@ -106,34 +103,13 @@ OLLAMA_API_URL=http://127.0.0.1:11434/api
 MODEL_NAME_AT_ENDPOINT=qwen3:0.6b
 ```
 
-#### Option C: Use OpenAI
+##### Option C: Use OpenAI
 
 Add to your `.env` and uncomment the OpenAI line in `src/mastra/agents/index.ts`:
 
 ```env
 OPENAI_API_KEY=your-key-here
 ```
-
-**Step 3: Install Dependencies**
-
-```bash
-# Using pnpm (recommended)
-pnpm install
-
-# Or use npm, yarn, or bun
-npm install
-```
-
-**Step 4: Start Development**
-
-```bash
-pnpm run dev:ui      # Start UI server (port 3000)
-pnpm run dev:agent   # Start Mastra agent server (port 4111)
-```
-
-Open <http://localhost:3000> to see your agent in action in the frontend.
-Open <http://localhost:4111> to open up the Mastra Agent Playground.
-
 
 ## 🏗️ Implementation Timeline
 
@@ -143,11 +119,13 @@ Open <http://localhost:4111> to open up the Mastra Agent Playground.
 - Winners Announced: 31 October
 
 ### Phase 1: Development
+
 1. **Setup** : Fork repo, install dependencies, choose template
 2. **Build** : Implement your tool functions and agent logic
 3. **Test** : Validate functionality at http://localhost:3000
 
 ### Phase 2: Containerization
+
 1. **Clean up**: Remove unused agents from `src/mastra/index.ts`
 2. **Build**: Create Docker container using the provided `Dockerfile`
 3. **Test locally**: Verify container works correctly
@@ -219,8 +197,6 @@ Your submission **must** include:
    - Add your forked GitHub repository link
    - Add a link to your social media post
    - Submissions that do not meet all requirements will not be considered
-
-
 
 ## 🚀 Deploying to Nosana
 
