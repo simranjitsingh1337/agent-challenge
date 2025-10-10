@@ -1,17 +1,18 @@
 {
   "global": {
     "env": {
-      "MODEL": "gpt-oss:20b"
+      "MODEL": "qwen3:8b"
     }
   },
   "ops": [
     {
       "id": "agents",
       "args": {
-        "image": "k1llahkeezy/my-agent:0.0.2",
-        "expose": 8080,
+        "image": "djmbritt/agent-challenge:latest",
+        "expose": 3000,
         "env": {
-          "API_BASE_URL": "http://%%ops.ollama.host%%:11434"
+          "NOS_OLLAMA_API_URL": "http://%%ops.ollama.host%%:11434/api",
+          "NOS_MODEL_NAME_AT_ENDPOINT": "qwen3:8b"
         }
       },
       "execution": {
@@ -36,7 +37,7 @@
         ],
         "resources": [
           {
-            "url": "https://models.nosana.io/ollama/gpt-oss/20b",
+            "url": "https://models.nosana.io/ollama/qwen3/8b",
             "type": "S3",
             "target": "/root/.ollama/models",
             "allowWrite": true
@@ -49,6 +50,12 @@
       "type": "container/run"
     }
   ],
+  "meta": {
+    "trigger": "dashboard",
+    "system_requirements": {
+      "required_vram": 24
+    }
+  },
   "type": "container",
   "version": "0.1"
 }

@@ -1,20 +1,22 @@
-import { Mastra } from '@mastra/core';
-import { calculatorAgent } from './agents/calculator/calculator-agent';
-import { cryptoAgent } from './agents/crypto/crypto-agent';
-import { githubAgent } from './agents/github/github-agent';
-import { weatherAgent } from './agents/weather-agent/weather-agent';
-import { yourAgent } from './agents/your-agent/your-agent';
+import { Mastra } from "@mastra/core/mastra";
+import { LibSQLStore } from "@mastra/libsql";
+import { weatherAgent } from "./agents";
+import { ConsoleLogger, LogLevel } from "@mastra/core/logger";
+import { server } from "./mcp";
+
+const LOG_LEVEL = process.env.LOG_LEVEL as LogLevel || "info";
 
 export const mastra = new Mastra({
   agents: {
-    calculator: calculatorAgent,
-    crypto: cryptoAgent,
-    github: githubAgent,
-    weather: weatherAgent,
-    yourAgent: yourAgent,
+    weatherAgent
   },
-  server: {
-    port: 8080,
-    timeout: 10000,
+  mcpServers: {
+    server
   },
+  storage: new LibSQLStore({
+    url: ":memory:"
+  }),
+  logger: new ConsoleLogger({
+    level: LOG_LEVEL,
+  }),
 });

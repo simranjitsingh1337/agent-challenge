@@ -1,6 +1,6 @@
 # Nosana and AI Builders Presents: BUIDL DAY @ TOKEN2049 🚀
 
-![Agent](./assets/NosanaSingapore2049XSmall.jpg)
+![Agent](./assets/NosanaBuildersChallenge03.jpg)
 
 ## Welcome to the AI Agent Challenge
 
@@ -8,143 +8,221 @@ Build and deploy intelligent AI agents using the **Mastra framework** on the **N
 
 ## 🎯 Challenge Overview
 
-Create an AI agent that can perform real-world tasks through tool calling capabilities. You'll build TypeScript functions that enable your agent to make API calls, perform calculations, fetch data, and interact with external services.
+**Your Mission:** Build an intelligent AI agent with a frontend interface and deploy it on Nosana's decentralized network.
 
-**Timeline**: 3 hours  
-**Goal**: Build, containerize, and deploy a functional AI agent  
-**Reward**: Prize pool for top 10 submissions  
+### What You'll Build
 
-## 🚀 Quick Start (2 minutes)
+Create an AI agent that performs real-world tasks using:
+- **Mastra framework** for agent orchestration
+- **Tool calling** to interact with external services
+- **MCP (Model Context Protocol)** for enhanced capabilities
+- **Custom frontend** to showcase your agent's functionality
+
+### Agent Ideas & Examples
+
+The possibilities are endless! Here are some ideas to get you started:
+
+- 🤖 **Personal Assistant** - Schedule management, email drafting, task automation
+- 📊 **Data Analyst Agent** - Fetch financial data, generate insights, create visualizations
+- 🌐 **Web Researcher** - Aggregate information from multiple sources, summarize findings
+- 🛠️ **DevOps Helper** - Monitor services, automate deployments, manage infrastructure
+- 🎨 **Content Creator** - Generate social media posts, blog outlines, marketing copy
+- 🔍 **Smart Search** - Multi-source search with AI-powered result synthesis
+- 💬 **Customer Support Bot** - Answer FAQs, ticket routing, knowledge base queries
+
+**Be Creative!** The best agents solve real problems in innovative ways.
+
+## Getting Started Template
+
+![frontend](./assets/nosanaMastraAgentKit.png)
+
+This is a starter template for building AI agents using [Mastra](https://mastra.ai) and [CopilotKit](https://copilotkit.ai). It provides a modern Next.js application with integrated AI capabilities and a beautiful UI.
+
+## Prerequisites
+
+- Node.js 18+ 
+- Any of the following package managers:
+  - pnpm (recommended)
+  - npm
+  - yarn
+  - bun
+
+> **Note:** This repository ignores lock files (package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb) to avoid conflicts between different package managers. Each developer should generate their own lock file using their preferred package manager. After that, make sure to delete it from the .gitignore.
+
+## Getting Started
+
+### Prerequisites & Registration
+
+To participate in the challenge and get Nosana credits/NOS tokens, complete these steps:
+
+1. Register at [SuperTeam](https://earn.superteam.fun/listing/nosana-builders-challenge-agents-102)
+2. Register at the [Luma Page](https://luma.com/zkob1iae)
+3. Star these repos:
+   - [this repo](https://github.com/nosana-ci/agent-challenge)
+   - [Nosana CLI](https://github.com/nosana-ci/nosana-cli)
+   - [Nosana SDK](https://github.com/nosana-ci/nosana-sdk)
+4. Complete [this registration form](https://e86f0b9c.sibforms.com/serve/MUIFALaEjtsXB60SDmm1_DHdt9TOSRCFHOZUSvwK0ANbZDeJH-sBZry2_0YTNi1OjPt_ZNiwr4gGC1DPTji2zdKGJos1QEyVGBzTq_oLalKkeHx3tq2tQtzghyIhYoF4_sFmej1YL1WtnFQyH0y1epowKmDFpDz_EdGKH2cYKTleuTu97viowkIIMqoDgMqTD0uBaZNGwjjsM07T)
+
+### Setup Your Development Environment
+
+**Step 1: Fork & Clone**
 
 ```bash
-# 1. Fork and clone the repository
-git clone https://github.com/nosana-ai/agent-challenge
+# Fork this repo on GitHub, then clone your fork
+git clone https://github.com/YOUR-USERNAME/agent-challenge
 cd agent-challenge
-
-# 2. Install dependencies
-npm install
-
-# 3. Copy environment file
 cp .env.example .env
-
-
-# 4. Start development server
-npm run dev
-# Open http://localhost:8080 for the playground
 ```
 
-## 🎯 Choose Your Path
+**Step 2: Choose Your LLM for Development**
 
-We've prepared **3 prebuilt templates** to jumpstart your development. Pick the one that matches your skill level, or use them as inspiration to build something completely new!
+Pick one option below to power your agent during development:
 
-### 🧮 Calculator Agent (Beginner)
-**Perfect for**: First-time AI agent builders  
-**What it does**: Performs mathematical operations and explains calculations step-by-step  
-**Skills needed**: Basic TypeScript knowledge  
-**Test prompts**:
-- "Calculate 25 + 17"  
-- "What's 100 divided by 4?"  
-- "Multiply 12 by 8"  
+#### Option A: Use Shared Nosana LLM Endpoint (Recommended - No Setup!)
 
-### 💰 Crypto Price Agent (Intermediate)
-**Perfect for**: Developers comfortable with APIs  
-**What it does**: Fetches live cryptocurrency prices and market data  
-**Skills needed**: API integration, JSON parsing  
-**Test prompts**:
-- "What's the current price of Bitcoin?"  
-- "Show me SOL price"  
-- "How much is Ethereum worth?"  
+We provide a free LLM endpoint hosted on Nosana for development. Edit your `.env`:
 
-### 🐙 GitHub Stats Agent (Advanced)
-**Perfect for**: Experienced developers  
-**What it does**: Analyzes GitHub repositories and provides detailed statistics  
-**Skills needed**: GitHub API, data processing  
-**Test prompts**:
-- "Get stats for facebook/react"  
-- "Show me microsoft/typescript repository"  
-- "Analyze nosana-ai/nosana-cli stats"  
+```env
+# Qwen3:8b - Nosana Endpoint
+OLLAMA_API_URL=https://<nosana-url-id>.node.k8s.prd.nos.ci/api
+MODEL_NAME_AT_ENDPOINT=qwen3:8b
+```
 
-## 🛠️ Build Your Own Agent
+If it goes down, reach out on [Discord](https://discord.com/channels/236263424676331521/1354391113028337664)
 
-Want to create something unique? You can build your own agent from scratch! The `your-agent` template provides a starting foundation:
+#### Option B: Use Local LLM
+
+Run Ollama locally (requires [Ollama installed](https://ollama.com/download)):
 
 ```bash
-# Start with the basic template
-# Edit src/mastra/agents/your-agent/your-tool.ts
-# Edit src/mastra/agents/your-agent/your-agent.ts
-npm run dev
+ollama pull qwen3:0.6b
+ollama serve
 ```
 
-**Ideas for custom agents**:
-- Weather forecasting agent
-- News summarization agent  
-- Task management agent
-- Social media analytics agent
-- E-commerce price comparison agent
+Edit your `.env`:
+```env
+OLLAMA_API_URL=http://127.0.0.1:11434/api
+MODEL_NAME_AT_ENDPOINT=qwen3:0.6b
+```
+
+#### Option C: Use OpenAI
+
+Add to your `.env` and uncomment the OpenAI line in `src/mastra/agents/index.ts`:
+
+```env
+OPENAI_API_KEY=your-key-here
+```
+
+**Step 3: Install Dependencies**
+
+```bash
+# Using pnpm (recommended)
+pnpm install
+
+# Or use npm, yarn, or bun
+npm install
+```
+
+**Step 4: Start Development**
+
+```bash
+pnpm run dev:ui      # Start UI server (port 3000)
+pnpm run dev:agent   # Start Mastra agent server (port 4111)
+```
+
+Open <http://localhost:3000> to see your agent in action in the frontend.
+Open <http://localhost:4111> to open up the Mastra Agent Playground.
+
 
 ## 🏗️ Implementation Timeline
 
-### Phase 1: Development (0:00 - 1:45)
-1. **Setup** (0:00-0:15): Fork repo, install dependencies, choose template
-2. **Build** (0:15-1:30): Implement your tool functions and agent logic
-3. **Test** (1:30-1:45): Validate functionality at http://localhost:8080
+**Important Dates:**
+- Start Challenge: 10 October
+- Submission Deadline: 24 October
+- Winners Announced: 31 October
 
-### Phase 2: Containerization (1:45 - 2:00)
+### Phase 1: Development
+1. **Setup** : Fork repo, install dependencies, choose template
+2. **Build** : Implement your tool functions and agent logic
+3. **Test** : Validate functionality at http://localhost:3000
+
+### Phase 2: Containerization
 1. **Clean up**: Remove unused agents from `src/mastra/index.ts`
-2. **Build**: Create Docker container
+2. **Build**: Create Docker container using the provided `Dockerfile`
 3. **Test locally**: Verify container works correctly
 
 ```bash
-# Build your container
-docker build -t yourusername/my-agent:0.0.0 .
+# Build your container (using the provided Dockerfile)
+docker build -t yourusername/agent-challenge:latest .
 
 # Test locally first
-docker run -p 8080:8080 yourusername/my-agent:0.0.0
+docker run -p 3000:3000 yourusername/agent-challenge:latest 
 
 # Push to Docker Hub
 docker login
-docker push yourusername/my-agent:0.0.0
+docker push yourusername/agent-challenge:latest
 ```
 
-### Phase 3: Deployment (2:00 - 2:30)
-1. **Deploy to Nosana**: Use the provided job definition
-2. **Verify**: Ensure your agent runs on Nosana network
-3. **Submit**: Provide deployment details
+### Phase 3: Deployment to Nosana
+1. **Deploy your complete stack**: The provided `Dockerfile` will deploy:
+   - Your Mastra agent
+   - Your frontend interface
+   - An LLM to power your agent (all in one container!)
+2. **Verify**: Test your deployed agent on Nosana network
+3. **Capture proof**: Screenshot or get deployment URL for submission
 
-### Phase 4: Presentation (2:30 - 3:00)
-Prepare your 2-minute pitch highlighting your agent's capabilities and innovation.
+### Phase 4: Video Demo
 
-## 🔧 Technical Setup
+Record a 1-3 minute video demonstrating:
+- Your agent **running on Nosana** (show the deployed version!)
+- Key features and functionality
+- The frontend interface in action
+- Real-world use case demonstration
+- Upload to YouTube, Loom, or similar platform
 
-### LLM Endpoint
-Use the provided Nosana endpoint for your agents:
+### Phase 5: Documentation
 
-```bash
-API_BASE_URL=https://4owyhaaufshxptwidyobx3eqvx2ef7henujzvvpqm93z.node.k8s.prd.nos.ci/api
-MODEL_NAME_AT_ENDPOINT=qwen2.5:32b
-```
+Update this README with:
+- Agent description and purpose
+- What tools/APIs your agent uses
+- Setup instructions
+- Environment variables required
+- Example usage and screenshots
 
-### Local Development
-```bash
-npm run dev     # Start development server with playground
-```
+## ✅ Minimum Requirements
 
-### Docker Commands
-```bash
-# Build and test locally
-docker build -t yourusername/agent-challenge:0.0.0 .
-docker run -p 8080:8080 yourusername/agent-challenge:0.0.0
+Your submission **must** include:
 
-# Push to registry
-docker login
-docker push yourusername/agent-challenge:0.0.0
-```
+- [ ] **Agent with Tool Calling** - At least one custom tool/function
+- [ ] **Frontend Interface** - Working UI to interact with your agent
+- [ ] **Deployed on Nosana** - Complete stack running on Nosana network
+- [ ] **Docker Container** - Published to Docker Hub
+- [ ] **Video Demo** - 1-3 minute demonstration
+- [ ] **Updated README** - Clear documentation in your forked repo
+- [ ] **Social Media Post** - Share on X/BlueSky/LinkedIn with #NosanaAgentChallenge
+
+## Submission Process
+
+1. **Complete all requirements** listed above
+2. **Commit all of your changes to the `main` branch of your forked repository**
+   - All your code changes
+   - Updated README
+   - Link to your Docker container
+   - Link to your video demo
+   - Nosana deployment proof
+3. **Social Media Post** (Required): Share your submission on X (Twitter), BlueSky, or LinkedIn
+   - Tag @nosana_ai
+   - Include a brief description of your agent
+   - Add hashtag #NosanaAgentChallenge
+4. **Finalize your submission on the [SuperTeam page](https://earn.superteam.fun/listing/nosana-builders-challenge-agents-102)**
+   - Add your forked GitHub repository link
+   - Add a link to your social media post
+   - Submissions that do not meet all requirements will not be considered
+
+
 
 ## 🚀 Deploying to Nosana
 
-### Prerequisites
-- Register via the [Luma Page](https://luma.com/nosana-buidlday-SG) to receive credits
-- Have a Docker Hub account with your pushed image
 
 ### Using Nosana Dashboard
 1. Open [Nosana Dashboard](https://dashboard.nosana.com/deploy)
@@ -152,7 +230,7 @@ docker push yourusername/agent-challenge:0.0.0
 3. Edit `nos_job_def/nosana_mastra.json` with your Docker image:
    ```json
    {
-     "image": "yourusername/agent-challenge:0.0.0"
+     "image": "yourusername/agent-challenge:latest"
    }
    ```
 4. Copy and paste the edited job definition
@@ -195,14 +273,22 @@ Submissions evaluated on 4 key areas (25% each):
 ## 🎁 Prizes
 
 **Top 10 submissions will be rewarded:**
-- 🥇 1st Place: $TBD USDC
-- 🥈 2nd Place: $TBD USDC  
-- 🥉 3rd Place: $TBD USDC
-- 🏅 4th-10th Place: Prizes TBD
+- 🥇 1st Place: $1,000 USDC
+- 🥈 2nd Place: $750 USDC
+- 🥉 3rd Place: $450 USDC
+- 🏅 4th Place: $200 USDC
+- 🏅 5th-10th Place: $100 USDC each
 
 ## 📚 Learning Resources
 
+For more information, check out the following resources:
+
+- [Mastra Documentation](https://mastra.ai/en/docs) - Learn more about Mastra and its features
+- [CopilotKit Documentation](https://docs.copilotkit.ai) - Explore CopilotKit's capabilities
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API
+
 ### Essential Reading
+
 - [Mastra Agents Overview](https://mastra.ai/en/docs/agents/overview)
 - [Build an AI Stock Agent Guide](https://mastra.ai/en/guides/guide/stock-agent)
 - [Mastra Tool Calling Documentation](https://mastra.ai/en/docs/agents/tools)
@@ -220,20 +306,15 @@ Submissions evaluated on 4 key areas (25% each):
 - **Dedicated Channel**: [Builders Challenge Dev Chat](https://discord.com/channels/236263424676331521/1354391113028337664)
 - **Twitter**: Follow [@nosana_ai](https://x.com/nosana_ai) for live updates
 
-
-
 ## 🎉 Ready to Build?
 
 1. **Fork** this repository
-2. **Choose** your template or go custom
-3. **Build** your AI agent
-4. **Deploy** to Nosana
-5. **Present** your creation
+2. **Build** your AI agent
+3. **Deploy** to Nosana
+4. **Present** your creation
 
 Good luck, builders! We can't wait to see the innovative AI agents you create for the Nosana ecosystem.
 
 **Happy Building!** 🚀
 
----
 
-*This challenge is part of TOKEN2049 Singapore. For the latest updates and announcements, join our Discord and follow our social channels.*
