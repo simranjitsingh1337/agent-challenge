@@ -82,7 +82,7 @@ We provide a free LLM endpoint hosted on Nosana for development. Edit your `.env
 
 ```env
 # Qwen3:8b - Nosana Endpoint
-OLLAMA_API_URL=https://<nosana-url-id>.node.k8s.prd.nos.ci/api
+OLLAMA_API_URL=https://28ttcdqa7mp95pjmi56s6s2wkmqjg8jmkhpkt6ueraxx.node.k8s.prd.nos.ci/api
 MODEL_NAME_AT_ENDPOINT=qwen3:8b
 ```
 
